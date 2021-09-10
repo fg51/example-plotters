@@ -2,8 +2,9 @@ use anyhow::Result;
 
 use plotters::{
     chart::ChartBuilder,
-    drawing::{BitMapBackend, IntoDrawingArea},
+    drawing::IntoDrawingArea,
     element::PathElement,
+    prelude::BitMapBackend,
     series::LineSeries,
     style::colors::{BLACK, RED, WHITE},
     style::{Color, IntoFont},
@@ -18,7 +19,7 @@ pub fn run() -> Result<()> {
         .margin(5)
         .x_label_area_size(30)
         .y_label_area_size(30)
-        .build_ranged(-1f32..1f32, -0.1f32..1f32)?;
+        .build_cartesian_2d(-1f32..1f32, -0.1f32..1f32)?;
 
     chart.configure_mesh().draw()?;
 
